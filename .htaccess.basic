@@ -1,0 +1,39 @@
+# Money Manager - Configuración Apache Básica
+# Versión simplificada para servidores con configuraciones restrictivas
+
+RewriteEngine On
+
+# Protección básica de archivos sensibles
+<Files ".env*">
+    Order deny,allow
+    Deny from all
+</Files>
+
+<Files "*.db">
+    Order deny,allow
+    Deny from all
+</Files>
+
+<FilesMatch "\.(log|md|json|sql|bak)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Proteger directorios sensibles usando RewriteRule
+RewriteCond %{REQUEST_URI} ^/(config|classes|scripts|data|logs)/.*\.php$ [NC]
+RewriteRule ^(.*)$ - [F,L]
+
+# Permitir acceso a archivos AJAX
+RewriteCond %{REQUEST_URI} ^/ajax/.*\.php$ [NC]
+RewriteRule ^(.*)$ - [L]
+
+# Prevenir listado de directorios
+Options -Indexes
+
+# Configuración de errores personalizados
+ErrorDocument 404 /404.php
+ErrorDocument 500 /500.php
+ErrorDocument 403 /404.php
+
+# Configuración de charset por defecto
+AddDefaultCharset UTF-8

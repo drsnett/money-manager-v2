@@ -1,0 +1,60 @@
+# Base de datos
+data/*.db
+money_manager*.db
+*.sqlite
+*.sqlite3
+
+# Logs y cache
+logs/
+data/cache/
+data/error.log
+*.log
+
+# Editores
+/.vscode
+/.idea
+*.swp
+*.swo
+*~
+
+# Archivos de entorno
+.env.local
+.env.development
+
+# Dependencias
+node_modules/
+vendor/
+composer.lock
+package-lock.json
+yarn.lock
+
+# Archivos temporales
+*.tmp
+*.temp
+*.bak
+*.backup
+
+# Backups
+backups/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Uploads temporales
+uploads/temp/
+
+# Archivos de prueba
+test_*.php
+debug.php
+phpinfo.php
+
+# Documentación de desarrollo
+docs/
+*.md
+!README.md
+
+# Archivos de configuración FTP/SFTP
+.ftpignore
+.sftpignore

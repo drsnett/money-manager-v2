@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Hola Mundo</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script>
+        $(function() {
+            setTimeout(console.log.bind(console, "%cPowered by:", "color: red; font-size: 20px; font-weight: bold;"), 1000);
+            setTimeout(console.log.bind(console, "%cDev Network Solutions", "color: #00d09e; font-size: 40px; font-weight: bold; text-shadow: 1px 1px 5px #00d09e; filter: dropshadow(color=#00d09e, offx=1, offy=1);"), 1000);
+            setTimeout(console.log.bind(console, "%chttp://panel.drsnet.ovh", "color: black; font-size: 15px; font-weight: bold;"), 1000);
+
+            $(document).on("click", ".NotifySkipButton", function (e) {
+                $.ajax({
+                    type: 'POST',
+                    async: true,
+                    data: {
+                        type: this.getAttribute("NotifyType"),
+                        id: this.getAttribute("NotifyID"),
+                        rndm: Math.floor(Math.random() * 99999)
+                    },
+                    url: '/functions/notificationskip.php',
+                    success: function (data) {
+                        NotificationsRemoveAll();
+                        ShowNotifications(true);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>     
+</body>
+</html>
